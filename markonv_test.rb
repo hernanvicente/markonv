@@ -14,6 +14,13 @@ class MarkonvTest < Minitest::Test
 
       * One
       * Two
+      * Three
+
+      Another paragraph
+
+      - Uno
+      - Dos
+      - Tres
 
       A final paragraph
     MARKDOWN
@@ -23,8 +30,17 @@ class MarkonvTest < Minitest::Test
       <p>But <em>emphasis</em> and <em>emphasis</em> are emphasis tags.</p>
       <p>And this is the second paragraph</p>
       <p>And this is the third paragraph and a list:</p>
-      <p>* One
-      * Two</p>
+      <ul>
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+      </ul>
+      <p>Another paragraph</p>
+      <ul>
+      <li>Uno</li>
+      <li>Dos</li>
+      <li>Tres</li>
+      </ul>
       <p>A final paragraph</p>
     HTML
   end
