@@ -7,9 +7,9 @@ class Markonv
   def parse
     prepare
     convert_paragraphs
+    convert_strongs
     remove_empty_lines
     @result
-
   end
 
   private
@@ -21,6 +21,13 @@ class Markonv
   def convert_paragraphs
     @result = @result.gsub(/[^\r\n]+((\r|\n|\r\n)[^\r\n]+)*/) do |match|
       "<p>#{match.strip}</p>"
+    end
+  end
+
+  def convert_strongs
+    @result = @result.gsub(/(\*\*|__)(.*?)\1/) do |match|
+      content = match.gsub(/\*{2}|_{2}/, '')
+      "<strong>#{content}</strong>"
     end
   end
 

@@ -4,7 +4,7 @@ require_relative 'markonv'
 class MarkonvTest < Minitest::Test
   def setup
     @markdown = <<~MARKDOWN
-      And **strong** and **bold** are strong tags.
+      And **strong** and __bold__ are strong tags.
 
       And this is the second paragraph
 
@@ -17,7 +17,7 @@ class MarkonvTest < Minitest::Test
     MARKDOWN
 
     @html = <<~HTML.strip
-      <p>And **strong** and **bold** are strong tags.</p>
+      <p>And <strong>strong</strong> and <strong>bold</strong> are strong tags.</p>
       <p>And this is the second paragraph</p>
       <p>And this is the third paragraph and a list:</p>
       <p>* One
