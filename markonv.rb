@@ -8,6 +8,7 @@ class Markonv
     prepare
     convert_paragraphs
     convert_strongs
+    convert_emphasis
     remove_empty_lines
     @result
   end
@@ -25,9 +26,16 @@ class Markonv
   end
 
   def convert_strongs
-    @result = @result.gsub(/(\*\*|__)(.*?)\1/) do |match|
+    @result = @result.gsub(/(\*{2}|_{2})(.*?)\1/) do |match|
       content = match.gsub(/\*{2}|_{2}/, '')
       "<strong>#{content}</strong>"
+    end
+  end
+
+  def convert_emphasis
+    @result = @result.gsub(/(\*|_)(.*?)\1/) do |match|
+      content = match.gsub(/\*|_/, '')
+      "<em>#{content}</em>"
     end
   end
 
